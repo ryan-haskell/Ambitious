@@ -15,5 +15,9 @@ public class Global
 	public static final int COLOR_BLUE = 0,	COLOR_GREEN = 1, COLOR_BLACK = 2;
 	
 	//	PLAYER
-	public static final int PLAYER_SIZE = 20;
+	public static final int PLAYER_SIZE = 20,
+							PLAYER_SPEED = 17;
+	
+	//	OTHER
+	public static final int FPS = 60;
 }

@@ -2,16 +2,13 @@ package frontend;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
 import backend.Clock;
 import backend.Display;
-import backend.Game;
 import backend.Global;
 
 public class Frame extends JFrame implements Display, Clock
@@ -81,10 +78,18 @@ public class Frame extends JFrame implements Display, Clock
 	{
 		return System.currentTimeMillis();
 	}
+	
+	//xsin(angle) + ycos(angle)
 
-	public void drawRect(int x, int y, int w, int h, int color) 
+	public void drawRect(int x, int y, int w, int h, int angle, int color) 
 	{
 		imageGraphics.setColor(colors[color]);
 		imageGraphics.fillRect(x, y, w, h);
+	}
+	
+	public void drawPolygon(int[] xs, int[] ys, int size, int color)
+	{
+		imageGraphics.setColor(colors[color]);
+		imageGraphics.fillPolygon(xs, ys, size);
 	}
 }

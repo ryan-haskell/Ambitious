@@ -1,70 +1,48 @@
 package backend;
 
-public class Game 
+public class Game
 {
-	private World world;
-	private Ambi player;
-	private Ship playerShip;
 	private Display display;
-	private Input input;
-	private Clock clock;
+	private boolean moving;
+	private Player player;
+	private World world;
+	
+	public Game(Display d)
+	{
+		this.display = d;
+		this.moving = false;
+		this.player = new Player();
+		this.world = new World(this);
+	}
 
-	private boolean up,down,left,right;
-	
-	public Game()
-	{
-		player = new Ambi();
-	}
-	
-	private void initWorld()
-	{
-		world = new World();
-	}
-	
-	public void setInput(Input i)
-	{
-		input = i;
-	}
-	
-	public void setDisplay(Display d)
-	{
-		display = d;
-	}
-	
-	public void setClock(Clock c)
-	{
-		clock = c;
-	}
-	
 	public void start()
 	{
-		double lastTime = clock.getCurrentTime();
-		while(true)
+		for(int x = 0; x < Global.WORLD_WIDTH; x++)
+			for(int y = 0; y < Global.WORLD_HEIGHT; y++)
+			{
+				display.drawTile(x, y, (x+y+y)%2);
+			}
+		
+		display.updateScreen();
+	}
+	
+	
+	public void move(int direction)
+	{
+		if(!moving)
 		{
-		  double current = clock.getCurrentTime();
-		  double elapsed = current - lastTime;
-
-		  //	INPUT
-		  up = input.getUp();
-		  down = input.getDown();
-		  left = input.getLeft();
-		  right = input.getRight();
-		  
-		  if(elapsed > 1000/Global.FPS)
-		  {
-			  //	UPDATE
-
-			  update(elapsed);
-			  lastTime = current;
-			  
-			  //	OUTPUT
-			  display.draw();
-		  } 
+			moving = true;
+			
+			if(world.canMove(player, direction))
+			{
+				player.move(direction);
+				display.slide(direction);
+			}
 		}
 	}
 	
-	private void update(double elapsed)
+	public void resetMoving()
 	{
-		player.move(up,left,down,right,display);
+		moving = false;
 	}
 }

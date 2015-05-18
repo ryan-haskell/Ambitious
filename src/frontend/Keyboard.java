@@ -3,76 +3,33 @@ package frontend;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import backend.Input;
+import backend.Game;
 
-public class Keyboard implements KeyListener, Input
+public class Keyboard implements KeyListener
 {
-	boolean up, down, left, right;
+	private Game		game;
 	
-	public Keyboard()
+	public void setGame(Game g)
 	{
-		up = false;
-		down = false;
-		left = false;
-		right = false;
+		this.game = g;
 	}
-	
-	@Override
-	public void keyTyped(KeyEvent e) 
-	{}
 
 	@Override
-	public void keyPressed(KeyEvent e) 
+	public void keyPressed(KeyEvent event) 
 	{
-		int keycode = e.getKeyCode();
+		System.out.println("Pressed");
+	}
+
+	@Override
+	public void keyReleased(KeyEvent event) 
+	{
 		
-		switch(keycode)
-		{
-		case KeyEvent.VK_W:
-			up = true; break;
-		case KeyEvent.VK_A:
-			left = true; break;
-		case KeyEvent.VK_S:
-			down = true; break;
-		case KeyEvent.VK_D:
-			right = true; break;
-		}
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) 
+	public void keyTyped(KeyEvent event) 
 	{
-		int keycode = e.getKeyCode();
 		
-		switch(keycode)
-		{
-		case KeyEvent.VK_W:
-			up = false; break;
-		case KeyEvent.VK_A:
-			left = false; break;
-		case KeyEvent.VK_S:
-			down = false; break;
-		case KeyEvent.VK_D:
-			right = false; break;
-		case KeyEvent.VK_ESCAPE:
-			System.exit(0);return;
-		}
 	}
 
-	public boolean getUp() {
-		return up;
-	}
-
-	public boolean getDown() {
-		return down;
-	}
-
-	public boolean getLeft() {
-		return left;
-	}
-
-	public boolean getRight() {
-		return right;
-	}
-	
 }

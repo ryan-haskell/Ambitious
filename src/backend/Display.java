@@ -2,9 +2,7 @@ package backend;
 
 public interface Display 
 {
-
-	public void draw();
-	public void drawRect(int x, int y, int w, int h, int color);
-	public void drawPolygon(int[] xs, int[] ys, int size, int color);
-
+	public void drawTile(int x, int y, int color);
+	public void updateScreen();
+	public void slide(int direction);
 }

@@ -2,38 +2,45 @@ package backend;
 
 public class Actor 
 {
-	private int x, y, angle;
+	protected int x, y, dir, movement;
 	
-	public Actor(int x, int y)
+	public Actor()
 	{
-		setX(x);
-		setY(y);
-		setAngle(0);
+		this.x = 0;
+		this.y = 0;
+		this.dir = Global.DIR_DOWN;
+		this.movement = Global.MOVEMENT_LAND;
 	}
 	
-	public void setX(int x)
+	public int getX()
 	{
-		double angle = 0;
-		int x2 = (int)(x*Math.cos(angle)-y*Math.sin(angle));
-		int y2 = (int)(x*Math.sin(angle)+y*Math.cos(angle));
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+	
+	public int getDirection()
+	{
+		return dir;
+	}
+	
+	public void move(int direction)
+	{
+		switch(direction)
+		{
+		case Global.DIR_UP:
+			y = (y-1 + Global.WORLD_HEIGHT) % Global.WORLD_HEIGHT;
+		case Global.DIR_LEFT:
+			x = (x-1 + Global.WORLD_WIDTH) % Global.WORLD_WIDTH;
+		case Global.DIR_RIGHT:
+			x = (x+1)%Global.WORLD_WIDTH;
+		case Global.DIR_DOWN:
+			y = (y+1)%Global.WORLD_HEIGHT;
+		}
 		
-		this.x = x;
+		dir = direction;
 	}
-	
-	public void setY(int y)
-	{
-		this.y = y;
-	}
-	
-	public void setAngle(int angle)
-	{
-		this.angle = angle;
-	}
-	
-	public int getX(){return x;}
-	public int getY(){return y;}
-	public int getAngle(){return angle;}
-	
-	
-	
 }

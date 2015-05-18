@@ -1,23 +1,22 @@
 package backend;
 
-import java.awt.Toolkit;
-
 public class Global 
 {
-	//	SCREEN AND FRAME
-	public static final int 	SCREEN_W = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
-								SCREEN_H = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	public static final int		FRAME_W = 800, FRAME_H = 450;
-	public static final int		FRAME_X = 200,
-								FRAME_Y = 200;
+	public static final int 	VIEW_WIDTH = 16,
+								VIEW_HEIGHT = 9,
+								WORLD_WIDTH = 16,
+								WORLD_HEIGHT = 9;
 	
-	//	COLOR
-	public static final int COLOR_BLUE = 0,	COLOR_GREEN = 1, COLOR_BLACK = 2;
+	public static final int		COLOR_BLUE = 0,
+								COLOR_GREEN = 1;
 	
-	//	PLAYER
-	public static final int PLAYER_SIZE = 20,
-							PLAYER_SPEED = 17;
+	public static final int 	DIR_UP = 0,
+								DIR_LEFT = 1,
+								DIR_RIGHT = 2,
+								DIR_DOWN = 3;
 	
-	//	OTHER
-	public static final int FPS = 60;
+	public static final int 	MOVEMENT_LAND = 0,
+								MOVEMENT_SEA = 1,
+								MOVEMENT_LAND_SEA = 2;
+								
 }

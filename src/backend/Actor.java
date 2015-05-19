@@ -27,20 +27,30 @@ public class Actor
 		return dir;
 	}
 	
+	public int getMovement()
+	{
+		return movement;
+	}
+	
 	public void move(int direction)
 	{
+		
 		switch(direction)
 		{
 		case Global.DIR_UP:
 			y = (y-1 + Global.WORLD_HEIGHT) % Global.WORLD_HEIGHT;
+			break;
 		case Global.DIR_LEFT:
 			x = (x-1 + Global.WORLD_WIDTH) % Global.WORLD_WIDTH;
+			break;
 		case Global.DIR_RIGHT:
 			x = (x+1)%Global.WORLD_WIDTH;
+			break;
 		case Global.DIR_DOWN:
 			y = (y+1)%Global.WORLD_HEIGHT;
+			break;
 		}
-		
+
 		dir = direction;
 	}
 }

@@ -8,8 +8,8 @@ public class Ambitious
 	{
 		Keyboard kb = new Keyboard();
 		Frame frame = new Frame(kb);
-		Game game = new Game(frame);
-		kb.setGame(game);
+		Game game = new Game(frame,kb);
+		frame.setGame(game);
 		game.start();
 	}
 }
